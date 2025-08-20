@@ -1,69 +1,59 @@
-# React + TypeScript + Vite
+# Weather App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive, and scalable **Weather Application** built with **React, TypeScript, shadcn/ui, TailwindCSS, Recharts, and TanStack Query (React Query)**.
 
-Currently, two official plugins are available:
+The app provides real-time weather updates, 5-day forecasts, city search with history, and personalized features like favorites and theme switching — all optimized for speed, usability, and a delightful user experience.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**Live Demo:** [Weather App](https://d39y44142dbaos.cloudfront.net/)  
+**Repository:** [GitHub Repo](https://github.com/minalk97/weather-app)
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Features
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- 🌍 **Location-based weather** → Automatically detects browser location and shows real-time weather
+- 🔎 **City Search** → Search weather details of any city worldwide
+- ⭐ **Favorites** → Save or Remove your favorite cities (persisted via LocalStorage)
+- 🕘 **Search History** → Recently searched cities are stored locally for quick access
+- 🌗 **Dark/Light Mode** → Beautiful theme toggle with smooth transitions
+- 📅 **5-Day Forecast** → Visualized forecast with temperature trends using **Recharts**
+- ⚡ **Performance**
+  - Data fetching optimized with **TanStack Query** (caching)
+  - Client-side storage for fast retrieval of history/favorites
+  - query caching
+- 📱 **Responsive UI** → Built with **shadcn/ui** & **TailwindCSS** for modern design across devices
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Tech Stack
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- **Frontend Framework:** React (TypeScript)
+- **UI & Styling:** shadcn/ui, TailwindCSS
+- **State & Data Management:** React Query (TanStack Query)
+- **Charts:** Recharts (for forecast visualization)
+- **Storage:** LocalStorage (favorites + search history)
+- **Deployment:** AWS S3 + CloudFront (HTTPS)
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+---
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Performance Optimizations
+
+- **React Query (TanStack Query):**
+  - Caches API responses for faster navigation
+  - Prevents over-fetching
+
+## **LocalStorage:**
+
+- Stores favorites & history with instant access
+
+## **Clean Architecture:**
+
+- Ensures components are modular, reusable, and scalable
+
+## **CloudFront Deployment:**
+
+- HTTPS enabled for secure access
+
+---
+
+## Architecture Overview

@@ -26,6 +26,16 @@ export function CitySearch() {
   const { favorites } = useFavorites();
   const { history, clearHistory, addToHistory } = useSearchHistory();
 
+  interface City {
+    id: number;
+    lat: number;
+    lon: number;
+    country: string;
+    name: string;
+    state: string;
+    searchedAt: Date;
+  }
+
   const handleSelect = (cityData: string) => {
     const [lat, lon, name, country] = cityData.split("|");
 
@@ -67,7 +77,7 @@ export function CitySearch() {
             {/* Favorites Section */}
             {favorites.length > 0 && (
               <CommandGroup heading="Favorites">
-                {favorites.map((city) => (
+                {favorites.map((city: City) => (
                   <CommandItem
                     key={city.id}
                     value={`${city.lat}|${city.lon}|${city.name}|${city.country}`}
@@ -106,7 +116,7 @@ export function CitySearch() {
                       Clear
                     </Button>
                   </div>
-                  {history.map((item) => (
+                  {history.map((item: City) => (
                     <CommandItem
                       key={item.id}
                       value={`${item.lat}|${item.lon}|${item.name}|${item.country}`}

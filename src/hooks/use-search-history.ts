@@ -37,7 +37,7 @@ export function useSearchHistory() {
 
       // Remove duplicates and keep only last 10 searches
       const filteredHistory = history.filter(
-        (item) => !(item.lat === search.lat && item.lon === search.lon)
+        (item:SearchHistoryItem) => !(item.lat === search.lat && item.lon === search.lon)
       );
       const newHistory = [newSearch, ...filteredHistory].slice(0, 10);
 

@@ -10,7 +10,7 @@ import WeatherSkeleton from "../components/loading-skeleton";
 import { FavoriteCities } from "@/components/favorite-cities";
 import { useGeoLocation } from "@/hooks/use-geolocation";
 import CurrentWeather from "@/components/current-weather";
-import HourlyTemperature from "@/components/hourly-temperature";
+import { HourlyTemperature } from "@/components/hourly-temperature";
 import WeatherDetails from "@/components/weather-details";
 import WeatherForecast from "@/components/weather-forecast";
 
@@ -122,7 +122,7 @@ export function WeatherDashboard() {
           <HourlyTemperature data={forecastQuery.data} />
         </div>
 
-        <div className="grid gap-6 md:grid-cols-2 items-start">
+        <div className="grid gap-6 lg:grid-cols-2 items-start">
           <WeatherDetails data={weatherQuery.data} />
           <WeatherForecast data={forecastQuery.data} />
         </div>
