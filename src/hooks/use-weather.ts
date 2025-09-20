@@ -1,5 +1,5 @@
 import type { Coordinates } from "@/api/types";
-import { weatherAPI } from "@/api/weather";
+import { getCurrentWeather, reverseGeoCode, getForecast, searchLocations } from "@/api/weather";
 import { useQuery } from "@tanstack/react-query";
 
 export const WEATHER_KEYS = {
@@ -12,7 +12,7 @@ export const WEATHER_KEYS = {
 export function useWeatherQuery(coordinates:Coordinates| null){
   return useQuery({
         queryKey: WEATHER_KEYS.weather(coordinates ?? {lat :0, lon :0}),
-        queryFn: ()=> coordinates? weatherAPI.getCurrentWeather(coordinates) :null,
+        queryFn: ()=> coordinates? getCurrentWeather(coordinates) :null,
         enabled: !! coordinates,
     })
 }
@@ -20,7 +20,7 @@ export function useWeatherQuery(coordinates:Coordinates| null){
 export function useReverseGeoCodeQuery(coordinates:Coordinates| null){
   return useQuery({
         queryKey: WEATHER_KEYS.location(coordinates ?? {lat :0, lon :0}),
-        queryFn: ()=> coordinates? weatherAPI.reverseGeoCode(coordinates) :null,
+        queryFn: ()=> coordinates? reverseGeoCode(coordinates) :null,
         enabled: !! coordinates,
     })
 }
@@ -28,17 +28,15 @@ export function useReverseGeoCodeQuery(coordinates:Coordinates| null){
 export function useForecastQuery(coordinates:Coordinates| null){
   return useQuery({
         queryKey: WEATHER_KEYS.forecast(coordinates ?? {lat :0, lon :0}),
-        queryFn: ()=> coordinates? weatherAPI.getForecast(coordinates) :null,
+        queryFn: ()=> coordinates? getForecast(coordinates) :null,
         enabled: !! coordinates,
     })
-
-
 }
 
 export function useLocationSearch(query: string) {
   return useQuery({
     queryKey: WEATHER_KEYS.search(query),
-    queryFn: () => weatherAPI.searchLocations(query),
+    queryFn: () => searchLocations(query),
     enabled: query.length >= 3,
   });
 }
